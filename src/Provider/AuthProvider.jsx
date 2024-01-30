@@ -1,9 +1,18 @@
 import { createContext } from "react";
 
-const AuthProvider = () => {
-  return;
+const AuthContext = createContext(null); //creating context
 
-  <div></div>;
+const AuthProvider = ({ children }) => { //component always have props and children
+
+
+
+  
+
+  return 
+  <AuthContext.Provider value={ }>
+    {children}
+  </AuthContext.Provider>
+    
 };
 
 export default AuthProvider;
