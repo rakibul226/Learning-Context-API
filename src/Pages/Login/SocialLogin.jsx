@@ -1,13 +1,32 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const SocialLogin = () => {
-    return (
-        <>
-            <div className="divider">continue with</div>
-            <div className="">
-                <button className="btn btn-primary btn-circle btn-outline">Accent</button>
-            </div>
-        </>
-    );
+  const { googleLogin } = useContext(AuthContext);
+
+  const handleSocialLogin = (media) => {
+    media()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  return (
+    <>
+      <div className="divider">continue with</div>
+      <div className="">
+        <button
+          className="btn bg-gray-600 text-white"
+          onClick={() => handleSocialLogin(googleLogin)}
+        >
+          Google
+        </button>
+      </div>
+    </>
+  );
 };
 
 export default SocialLogin;
