@@ -6,8 +6,6 @@ export const AuthContext = createContext(null); //creating context
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
-  //component always have props and children
-
   //google login
   const googleLogin = () => {
     return signInWithPopup(auth, googleProvider);
