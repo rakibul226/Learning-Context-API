@@ -9,9 +9,8 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     //get field value on form submit
-    const name = event.target.name.value;
+    // const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
 
@@ -20,7 +19,6 @@ const Register = () => {
       toast.error("password must at leat 6 character long");
       return;
     }
-
     // create a new user
     createUser(email, password)
       .then((result) => {
