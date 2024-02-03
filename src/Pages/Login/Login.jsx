@@ -23,7 +23,8 @@ const Login = () => {
     //login with email and password
     loginUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
+        console.log("logged In");
       })
       .catch((error) => {
         console.log(error.message);
