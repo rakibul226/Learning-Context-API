@@ -5,7 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, handleUpdateProfile } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,6 +13,7 @@ const Register = () => {
     // const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
+    const img = event.target.imageUrl.value;
 
     // validation
     if (password.length < 6) {
@@ -22,10 +23,12 @@ const Register = () => {
     // create a new user
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        handleUpdateProfile(name, img).then(() => {
+          toast.success("User Created Successfully");
+        });
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error);
       });
   };
 
@@ -71,6 +74,7 @@ const Register = () => {
                 </label>
                 <input
                   type="text"
+                  name="imageUrl"
                   placeholder="image url"
                   className="input input-bordered"
                 />
