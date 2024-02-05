@@ -1,13 +1,17 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
   const { googleLogin, githubLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSocialLogin = (media) => {
     media()
-      .then((result) => {
-        console.log("logged in");
+      .then(() => {
+        toast.success("sign in successfully");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);

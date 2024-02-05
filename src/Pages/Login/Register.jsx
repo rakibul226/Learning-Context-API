@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 
 const Register = () => {
   const { createUser, handleUpdateProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,13 +24,14 @@ const Register = () => {
     }
     // create a new user
     createUser(email, password)
-      .then((result) => {
+      .then(() => {
         handleUpdateProfile(name, img).then(() => {
           toast.success("User Created Successfully");
+          navigate("/");
         });
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error.message);
       });
   };
 
