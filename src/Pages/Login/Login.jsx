@@ -23,7 +23,7 @@ const Login = () => {
 
     //login with email and password
     loginUser(email, password)
-      .then((result) => {
+      .then(() => {
         toast.success("sign in successfully");
         navigate("/");
       })
