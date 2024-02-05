@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const SocialLogin = () => {
-  const { googleLogin } = useContext(AuthContext);
+  const { googleLogin, githubLogin } = useContext(AuthContext);
 
   const handleSocialLogin = (media) => {
     media()
@@ -17,12 +17,18 @@ const SocialLogin = () => {
   return (
     <>
       <div className="divider">continue with</div>
-      <div className="">
+      <div className=" flex justify-around">
         <button
           className="btn bg-gray-600 text-white"
           onClick={() => handleSocialLogin(googleLogin)}
         >
           Google
+        </button>
+        <button
+          className="btn bg-gray-600 text-white"
+          onClick={() => handleSocialLogin(githubLogin)}
+        >
+          Github
         </button>
       </div>
     </>
